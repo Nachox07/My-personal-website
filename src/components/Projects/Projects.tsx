@@ -13,7 +13,7 @@ export default class Projects extends React.Component<ProjectsInterfaceProps, Pr
                 <h1 className="lsf-icon" data-icon="app">Proyectos en los que he trabajado</h1>
                 <div id="pro-flex">
                     {
-                        (this.props.projects)
+                        (this.props.projects.length > 0)
                         ?
                         this.props.projects.map((project, key) => {
                             return(

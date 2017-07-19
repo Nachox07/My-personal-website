@@ -1,15 +1,14 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import './NavBar.css';
 
-//Components
+// Components
 
-import Nav from '../NavBar/NavBar';
+/* import Nav from '../NavBar/NavBar';
 import Main from '../Main/Main';
 import Projects from '../Projects/Projects';
 import SocialMedia from '../SocialMedia/SocialMedia';
 import Knowledge from '../Knowledge/Knowledge';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';*/
 
 const scrollToElement = require('scroll-to-element');
 
@@ -40,30 +39,45 @@ export default class NavBar extends React.Component<{}, MainProps> {
   }
 
   scrollElement(elementId: string) {
+
     scrollToElement(
                   elementId, {
                   offset: 0, 
                   ease: 'linear', 
                   duration: 500
                 }); 
+
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll.bind(this));   
   }
 
   componentWillUnmount() {
-      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('scroll', this.handleScroll.bind(this));
   }
 
   handleScroll(event: Event) {
-    // const scrollTop = document.body.scrollTop;
 
-    let node = ReactDOM.findDOMNode(this.refs['Main']);
-    if (node){
-      let calculatedHeight = node.clientHeight;
-      console.log(calculatedHeight);
+    let scrollTop: number = document.body.scrollTop;
+
+    let meHeight: number = document.getElementById('me')!.clientHeight;
+    let projectsHeight: number = document.getElementById('projects')!.clientHeight + meHeight;
+    let socialMediaHeight: number = document.getElementById('social-media')!.clientHeight + projectsHeight;
+    let knowledgeHeight: number = document.getElementById('knowledge')!.clientHeight + socialMediaHeight;
+
+    if (scrollTop < meHeight) {
+      this.setState({active: 'me'});
+    } else if (scrollTop < projectsHeight) {
+      this.setState({active: 'projects'});
+    } else if (scrollTop < socialMediaHeight) {
+      this.setState({active: 'social-media'});
+    } else if (scrollTop < knowledgeHeight) {
+      this.setState({active: 'knowledge'});
     }
+
+    console.log(this.state.active);
+
   }
 
   render() {

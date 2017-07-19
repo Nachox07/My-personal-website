@@ -24,7 +24,7 @@ export default class Knowledge extends React.Component<{}, {}> {
                             </li>
 
                             <li>
-                                PHP 5.6 - 7.1 (Certificado de SoloLearn) - Lenaguaje que uso para la mayoría 
+                                PHP 5.6 - 7.1 (Certificado de SoloLearn) - Lenguaje que uso para la mayoría 
                                 de mis proyectos, alto dominio y experiencia con el desarrollo de 
                                 proyectos con el patrón de diseño MVC, frameworks y servicios API Restful 
                                 (Ej: Wordpress, slim, Symphony)

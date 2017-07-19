@@ -14,11 +14,15 @@ class App extends React.Component<{}, AppInterfaceState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      projects: []
+      projects: [],
+      NavH: 0,
+      ProjectsH: 0,
+      SocialMediaH: 0,
+      KnowledgeH: 0
     };
   }
 
-  getProjects() {
+  getProjects(): void {
       const BASE_URL: string = 'http://garilleti.me/';
       let FETCH_URL: string = `${BASE_URL}projects`;
 
@@ -37,6 +41,7 @@ class App extends React.Component<{}, AppInterfaceState> {
   }
 
   render() {
+
     return (
       <div className="App">
         <Nav />
