@@ -1,0 +1,27 @@
+    #sections-points {
+        right: 30px;
+        position: fixed;
+        top: 40%;
+        z-index: 10000;
+    }
+    
+    #sections-points ul {
+        list-style: none;
+    }
+    
+    #sections-points a {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        display: inline-block;
+        height: 13px;
+        width: 13px;
+    }
+    
+    #sections-points a:hover,
+    .actv {
+        background-color: rgba(0, 0, 0, 0.2)!important;
+        border-color: rgba(255, 255, 255, 0.8)!important;
+    }
+    
+    .no-actv {}
