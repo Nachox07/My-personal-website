@@ -57,7 +57,7 @@ export default class Main extends React.Component<{}, {}> {
                 target="_BLANK" 
               />
               <a 
-                href="blog.html" 
+                href="/blog" 
                 className="lsf-icon blog" 
                 data-icon="quote" 
                 target="_BLANK" 

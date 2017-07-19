@@ -76,8 +76,6 @@ export default class NavBar extends React.Component<{}, MainProps> {
       this.setState({active: 'knowledge'});
     }
 
-    console.log(this.state.active);
-
   }
 
   render() {
