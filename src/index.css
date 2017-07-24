@@ -115,6 +115,16 @@ span {
         text-align: center;
         width: 100%;
     }
+    #know-info h2 {
+        text-align: center;
+    }
+    #know-info ul {
+        margin: 0;
+        padding: 0;
+    }
+    #know-info li {
+        list-style: none;
+    }
     #tweets article {
         height: 160px;
     }

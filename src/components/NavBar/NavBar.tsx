@@ -40,8 +40,9 @@ export default class NavBar extends React.Component<{}, MainProps> {
 
   scrollElement(elementId: string) {
 
+    this.setState({active: elementId, hover: ''});
     scrollToElement(
-                  elementId, {
+                  `#${elementId}`, {
                   offset: 0, 
                   ease: 'linear', 
                   duration: 500
@@ -57,24 +58,28 @@ export default class NavBar extends React.Component<{}, MainProps> {
       window.removeEventListener('scroll', this.handleScroll.bind(this));
   }
 
-  handleScroll(event: Event) {
+  handleScroll(event: EventScroll) {
 
-    let scrollTop: number = document.body.scrollTop;
+    let scrollTop: number = window.scrollY;
 
     let meHeight: number = document.getElementById('me')!.clientHeight;
-    let projectsHeight: number = document.getElementById('projects')!.clientHeight + meHeight;
-    let socialMediaHeight: number = document.getElementById('social-media')!.clientHeight + projectsHeight;
-    let knowledgeHeight: number = document.getElementById('knowledge')!.clientHeight + socialMediaHeight;
+    let projectsHeight: number = document.getElementById('projects')!.clientHeight + meHeight - 1;
+    let socialMediaHeight: number = document.getElementById('social-media')!.clientHeight + projectsHeight - 1;
+    let knowledgeHeight: number = document.getElementById('knowledge')!.clientHeight + socialMediaHeight - 1;
+
+    let activeElement: string = 'me';
 
     if (scrollTop < meHeight) {
-      this.setState({active: 'me'});
+      activeElement = 'me';
     } else if (scrollTop < projectsHeight) {
-      this.setState({active: 'projects'});
+      activeElement = 'projects';
     } else if (scrollTop < socialMediaHeight) {
-      this.setState({active: 'social-media'});
+      activeElement = 'social-media';
     } else if (scrollTop < knowledgeHeight) {
-      this.setState({active: 'knowledge'});
+      activeElement = 'knowledge';
     }
+    
+    this.setState({active: activeElement});
 
   }
 
@@ -94,12 +99,10 @@ export default class NavBar extends React.Component<{}, MainProps> {
                   }
                   href="javascript:void(0)" 
                   title={item.name}
-                  onClick={() => {
-                    scrollToElement(`#${item.id}`);
-                    this.setState({active: item.id});
-                  }}
+                  onClick={() => this.scrollElement(item.id)}
                   onMouseOver={() => this.setState({hover: item.id})}
                   onMouseLeave={() => this.setState({hover: ''})}
+                  onTouchEnd={() => this.scrollElement(item.id)}
                 >
                 {
                   (this.state.hover === item.id)

@@ -45,3 +45,7 @@ interface TweetInterface {
         profile_image_url: string;
     };
 }
+
+interface EventScroll {
+    pageY: number 
+}
