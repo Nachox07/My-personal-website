@@ -1,9 +1,7 @@
 import * as React from 'react';
-
 import './SocialMedia.css';
 
 export default class SocialMedia extends React.Component<{}, TweetsList> {
-
   constructor() {
       super();
       this.state = {
@@ -28,15 +26,15 @@ export default class SocialMedia extends React.Component<{}, TweetsList> {
       <section id="social-media">
         <div>
             <div className="layer">
-                <h1 className="lsf-icon" data-icon="comments">Redes sociales</h1>
+                <h1 className="lsf-icon" data-icon="comments">Social networking</h1>
                 <div id="tweets">
-                    <h1 className="lsf-icon" data-icon="twitter">Últimos tweets de mi timeline</h1>
+                    <h1 className="lsf-icon" data-icon="twitter">Timeline latest tweets</h1>
                         {
-                            (this.state.tweets.length > 0) 
+                            (this.state.tweets.length > 0)
                             ? this.state.tweets.map((tweet, key) => {
                                 let dt = new Date(tweet.created_at);
                                 let mth = dt.getMonth() + 1;
-                                
+
                                 return (<article key={key}>
                                     <a href={`http://twitter.com/nachox07/status/${tweet.id_str}`} target="_blank">
                                     <div className="tweet-img">
@@ -50,7 +48,7 @@ export default class SocialMedia extends React.Component<{}, TweetsList> {
                                 </a>
                             </article>);
                             })
-                            : <article><p id="load">Cargando tweets...</p></article>
+                            : <article><p id="load">Loading tweets...</p></article>
                         }
                 </div>
             </div>

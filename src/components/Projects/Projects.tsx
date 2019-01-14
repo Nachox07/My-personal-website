@@ -4,13 +4,20 @@ import './Projects.css';
 // Components
 import Project from '../Project/Project';
 
-export default class Projects extends React.Component<ProjectsInterfaceProps, ProjectsInterfaceState> {
+type PropsType = {
+    projects: Array<ProjectI>;
+};
 
+type StateType = {
+    projects: Array<object>;
+};
+
+export default class Projects extends React.Component<PropsType, StateType> {
   render() {
     return (
       <section id="projects">
             <div className="layer">
-                <h1 className="lsf-icon" data-icon="app">Proyectos en los que he trabajado</h1>
+                <h1 className="lsf-icon" data-icon="app">Projects where I worked</h1>
                 <div id="pro-flex">
                     {
                         (this.props.projects.length > 0)
@@ -21,7 +28,7 @@ export default class Projects extends React.Component<ProjectsInterfaceProps, Pr
                             );
                         })
                         :
-                        <div className="err">¡No se han podido cargar mis proyectos!</div>
+                        <div className="err">Projects cannot be loaded now, try again later please</div>
                     }
                 </div>
             </div>

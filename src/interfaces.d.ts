@@ -1,19 +1,3 @@
-interface AppInterfaceState {
-    projects: Array<ProjectI>;
-    NavH: number;
-    ProjectsH: number;
-    SocialMediaH: number;
-    KnowledgeH: number;
-}
-
-interface ProjectsInterfaceProps {
-    projects: Array<ProjectI>;
-}
-
-interface ProjectsInterfaceState {
-    projects: Array<object>;
-}
-
 interface ProjectI {
     id: string;
     name: string;
@@ -25,11 +9,6 @@ interface ProjectI {
 
 interface ProjectProps {
     project: ProjectI;
-}
-
-interface MainProps {
-    active: string;
-    hover: string;
 }
 
 interface TweetsList {
@@ -47,5 +26,5 @@ interface TweetInterface {
 }
 
 interface EventScroll {
-    pageY: number 
+    pageY: number
 }

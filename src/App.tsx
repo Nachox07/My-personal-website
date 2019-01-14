@@ -6,11 +6,17 @@ import Nav from './components/NavBar/NavBar';
 import Main from './components/Main/Main';
 import Projects from './components/Projects/Projects';
 import SocialMedia from './components/SocialMedia/SocialMedia';
-import Knowledge from './components/Knowledge/Knowledge';
 import Footer from './components/Footer/Footer';
 
-class App extends React.Component<{}, AppInterfaceState> {
+interface StateType {
+  projects: Array<ProjectI>;
+  NavH: number;
+  ProjectsH: number;
+  SocialMediaH: number;
+  KnowledgeH: number;
+}
 
+class App extends React.Component<{}, StateType> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -23,8 +29,8 @@ class App extends React.Component<{}, AppInterfaceState> {
   }
 
   getProjects(): void {
-      const BASE_URL: string = 'http://garilleti.me/';
-      let FETCH_URL: string = `${BASE_URL}projects`;
+      const BASE_URL: string = 'http://garilleti.me';
+      const FETCH_URL: string = `${BASE_URL}/projects`;
 
       fetch(FETCH_URL, {
           method: 'GET'
@@ -46,11 +52,10 @@ class App extends React.Component<{}, AppInterfaceState> {
       <div className="App">
         <Nav />
         <Main />
-        <Projects 
-          projects={this.state.projects} 
+        <Projects
+          projects={this.state.projects}
         />
         <SocialMedia />
-        <Knowledge />
         <Footer />
       </div>
     );
